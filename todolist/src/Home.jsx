@@ -4,6 +4,11 @@ import Create from './create'
 import "./App.css"
 function Home() {
     const[todos,setTodos]=useState([])
+    useEffect(()=>{
+        axios.get('http://localhost:3001/get')
+        .then(result=>setTodos(result.data))
+        .catch(err=>console.log(err))
+    },[])
   return (
     <div>
         <div className="home">
